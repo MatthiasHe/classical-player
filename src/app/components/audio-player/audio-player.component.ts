@@ -1,10 +1,23 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from "@angular/core";
+import {
+	AfterViewInit,
+	Component,
+	ElementRef, EventEmitter,
+	Input,
+	OnChanges,
+	Output,
+	ViewChild
+} from "@angular/core";
 
 export interface ITrack {
 	name: string;
 	src: string;
 	img: string;
 	artist: string;
+}
+
+export enum ETrackChangeAction {
+	Next,
+	Previous,
 }
 
 @Component({
@@ -14,25 +27,40 @@ export interface ITrack {
 })
 export class PlayerAudioComponent implements OnChanges, AfterViewInit {
 	@Input() track: ITrack;
+	@Output() onTrackChange: EventEmitter<ETrackChangeAction> = new EventEmitter<ETrackChangeAction>();
 
 	@ViewChild('player') set playerRef(ref: ElementRef<HTMLAudioElement>) {
 		this.player = ref.nativeElement;
 	}
 
+	changeActions: typeof ETrackChangeAction = ETrackChangeAction;
 	player: HTMLAudioElement;
 
-	ngOnChanges() {
+	ngOnChanges(): void {
 		if (this.player) {
-			this.updateTrack();
+			this.updateTrackSrc();
 		}
 	}
 
-	ngAfterViewInit() {
-		this.updateTrack();
+	ngAfterViewInit(): void {
+		this.updateTrackSrc();
 	}
 
-	updateTrack(): void {
+	updateTrackSrc(): void {
+		this.player.currentTime = 0;
 		this.player.src = this.track.src;
 		this.player.play();
+	}
+
+	updatePlayingState(): void {
+		if (this.player.paused) {
+			this.player.play();
+		} else {
+			this.player.pause();
+		}
+	}
+
+	changeTrack(changeAction: ETrackChangeAction) {
+		this.onTrackChange.emit(changeAction);
 	}
 }

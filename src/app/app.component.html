@@ -5,11 +5,15 @@
 	</section>
 
 	<section class="controls">
-		<app-player-audio [track]="currentTrack"></app-player-audio>
+		<app-player-audio [track]="currentTrack" (onTrackChange)="changeTrackFromAction($event)"></app-player-audio>
 	</section>
 
 	<section class="tracklist">
-		<button class="track" *ngFor="let track of playlist" (click)="changeTrack(track)">
+		<button
+			class="track"
+			*ngFor="let track of playlist, let i = index"
+			(click)="changeTrack(i)"
+		>
 			{{ track.name }}
 			<span *ngIf="currentTrack === track" class="waves"></span>
 		</button>

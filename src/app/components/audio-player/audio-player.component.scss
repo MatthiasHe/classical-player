@@ -1,0 +1,22 @@
+.controls{
+	display:flex;
+	width:100%;
+	box-sizing:border-box;
+	transition: all 0.2s;
+
+	&_plays{
+		flex:2;
+		display:flex;
+		justify-content: space-around;
+	}
+}
+
+#plays_btn, #prev_btn, #next_btn{
+	cursor:pointer;
+	width:26px;
+	max-width:18px;
+	&:hover{
+		fill: pink;
+	}
+	transition: all 0.2s;
+}

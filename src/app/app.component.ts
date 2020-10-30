@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { ITrack } from "./components/audio-player/audio-player.component";
+import { ETrackChangeAction, ITrack } from "./components/audio-player/audio-player.component";
 
 @Component({
 	selector: "app-root",
@@ -39,10 +39,20 @@ export class AppComponent {
 			artist: 'Beethoven',
 		}
 	];
+	currentTrackIndex = 0;
+	currentTrack: ITrack = this.playlist[this.currentTrackIndex];
 
-	currentTrack: ITrack = this.playlist[1];
+	changeTrack(index: number): void {
+		this.currentTrack = this.playlist[index];
+	}
 
-	changeTrack(track: ITrack): void {
-		this.currentTrack = track;
+	changeTrackFromAction(trackChangeAction: ETrackChangeAction): void {
+		if (trackChangeAction === ETrackChangeAction.Previous) {
+			this.currentTrackIndex = (this.currentTrackIndex - 1) >= 0 ? this.currentTrackIndex - 1 : this.playlist.length - 1;
+			this.currentTrack = this.playlist[this.currentTrackIndex];
+		} else {
+			this.currentTrackIndex = (this.currentTrackIndex + 1) === this.playlist.length ? 0 : this.currentTrackIndex + 1;
+			this.currentTrack = this.playlist[this.currentTrackIndex];
+		}
 	}
 }
