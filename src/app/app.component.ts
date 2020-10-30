@@ -45,7 +45,8 @@ export class AppComponent {
 	currentTrack: ITrack = this.playlist[this.currentTrackIndex];
 
 	changeTrack(index: number): void {
-		this.currentTrack = this.playlist[index];
+		this.currentTrackIndex = index;
+		this.currentTrack = this.playlist[this.currentTrackIndex];
 	}
 
 	changeTrackFromAction(trackChangeAction: ETrackChangeAction): void {
