@@ -1,0 +1,9 @@
+<button
+	class="track"
+	*ngFor="let track of tracklist, let i = index"
+	[ngClass]="{ 'playing': currentTrackIndex === i }"
+	(click)="selectTrack(i)"
+>
+	{{ track.name }}
+	<span *ngIf="currentTrackIndex === i && isPlaying" class="waves"></span>
+</button>

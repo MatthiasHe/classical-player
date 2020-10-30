@@ -1,13 +1,18 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { PlayerAudioComponent } from './audio-player/player-audio.component';
+import { TrackListComponent } from './tracklist/track-list.component';
 
 @NgModule({
-	declarations: [PlayerAudioComponent],
+	declarations: [
+		PlayerAudioComponent,
+		TrackListComponent
+	],
 	imports: [BrowserModule],
 	providers: [],
 	exports: [
-		PlayerAudioComponent
+		PlayerAudioComponent,
+		TrackListComponent,
 	]
 })
 export class ComponentsModule {}

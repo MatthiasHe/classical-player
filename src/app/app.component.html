@@ -9,14 +9,11 @@
 	</section>
 
 	<section class="tracklist">
-		<button
-			class="track"
-			*ngFor="let track of playlist, let i = index"
-			[ngClass]="{ 'playing': currentTrack === track }"
-			(click)="changeTrack(i)"
-		>
-			{{ track.name }}
-			<span *ngIf="currentTrack === track && !playerAudio?.player?.paused" class="waves"></span>
-		</button>
+		<app-track-list
+			[tracklist]="playlist"
+			[currentTrackIndex]="currentTrackIndex"
+			[isPlaying]="!playerAudio?.player?.paused"
+			(onTrackSelection)="changeTrack($event)"
+		></app-track-list>
 	</section>
 </div>
