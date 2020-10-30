@@ -1,12 +1,4 @@
-import {
-	AfterViewInit,
-	Component,
-	ElementRef, EventEmitter,
-	Input,
-	OnChanges,
-	Output,
-	ViewChild
-} from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { ITrack } from '../audio-player/player-audio.component';
 
 @Component({

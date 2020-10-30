@@ -1,12 +1,4 @@
-import {
-	AfterViewInit,
-	Component,
-	ElementRef, EventEmitter,
-	Input,
-	OnChanges,
-	Output,
-	ViewChild
-} from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, ViewChild } from "@angular/core";
 
 export interface ITrack {
 	name: string;
@@ -28,13 +20,12 @@ export enum ETrackChangeAction {
 export class PlayerAudioComponent implements OnChanges, AfterViewInit {
 	@Input() track: ITrack;
 	@Output() onTrackChange: EventEmitter<ETrackChangeAction> = new EventEmitter<ETrackChangeAction>();
+	changeActions: typeof ETrackChangeAction = ETrackChangeAction;
+	player: HTMLAudioElement;
 
 	@ViewChild('player') set playerRef(ref: ElementRef<HTMLAudioElement>) {
 		this.player = ref.nativeElement;
 	}
-
-	changeActions: typeof ETrackChangeAction = ETrackChangeAction;
-	player: HTMLAudioElement;
 
 	ngOnChanges(): void {
 		if (this.player) {
