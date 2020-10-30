@@ -1,0 +1,177 @@
+.player {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-top: 0.2rem;
+
+	.artist {
+		width: 100%;
+		text-align: center;
+
+		.artistPicture {
+			object-fit: scale-down;
+			width: 100%;
+			height: 15rem
+		}
+
+		.artistName {
+			background-color: pink;
+			border-radius: 50%;
+			padding: 0.1rem 0.1rem;
+		}
+	}
+
+
+	.tracklist {
+		width: 100%;
+		bottom: 0;
+	}
+
+	.track {
+		background: none;
+		color: inherit;
+		border: none;
+		outline: inherit;
+		padding: 0.5rem 0.4rem;
+		border-top: 1px solid pink;
+		cursor: pointer;
+		width: 100%;
+		text-align: left;
+		position: relative;
+
+		&:hover {
+			background-color: lightblue;
+		}
+	}
+}
+
+// This code is only for the current track waves animation
+@each $num, $height1, $height2, $height3 in (1, 7px, 2px, 15px), (2, 5px, 10px, 15px), (3, 15px, 5px, 10px) {
+	@keyframes waves#{$num}{
+		0%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+		10%{
+			height: $height2;
+			margin-top: -#{$height2};
+		}
+		20%{
+			height: $height3;
+			margin-top: -#{$height3};
+		}
+		30%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+		40%{
+			height: $height2;
+			margin-top: -#{$height2};
+		}
+		50%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+		60%{
+			height: $height3;
+			margin-top: -#{$height3};
+		}
+		70%{
+			height: $height2;
+			margin-top: -#{$height2};
+		}
+		80%{
+			height: $height3;
+			margin-top: -#{$height3};
+		}
+		90%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+	}
+	@-webkit-keyframes waves#{$num}{
+		0%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+		10%{
+			height: $height2;
+			margin-top: -#{$height2};
+		}
+		20%{
+			height: $height3;
+			margin-top: -#{$height3};
+		}
+		30%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+		40%{
+			height: $height3;
+			margin-top: -#{$height3};
+		}
+		50%{
+			height: $height2;
+			margin-top: -#{$height2};
+		}
+		60%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+		70%{
+			height: $height3;
+			margin-top: -#{$height3};
+		}
+		80%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+		90%{
+			height: $height2;
+			margin-top: -#{$height2};
+		}
+		100%{
+			height: $height1;
+			margin-top: -#{$height1};
+		}
+	}
+}
+
+.waves{
+	content: '';
+	display: block;
+	position: absolute;
+	right: 3%;
+	top: auto;
+	bottom: 5px;
+	width: 3px;
+	height: 9px;
+	background: pink;
+	animation: waves2 forwards 2s infinite;
+	&:before{
+		content: '';
+		display: block;
+		position: absolute;
+		left: -5px;
+		top: auto;
+		bottom: 0;
+		width: 3px;
+		height: 9px;
+		background: pink;
+		animation: waves1 forwards 2s infinite;
+	}
+	&:after{
+		content: '';
+		display: block;
+		position: absolute;
+		left: auto;
+		top: auto;
+		bottom: 0;
+		right: -5px;
+		width: 3px;
+		height: 9px;
+		background: pink;
+		animation: waves3 forwards 2s infinite;
+	}
+}
