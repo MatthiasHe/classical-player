@@ -1,6 +1,6 @@
 <div class="player">
 	<section class="artist">
-		<img class="artistPicture" [src]="currentTrack.img">
+		<img class="artistPicture" [src]="currentTrack.img" alt="Artist picture">
 		<h1 class="artistName">{{ currentTrack.artist }}</h1>
 	</section>
 
@@ -12,10 +12,11 @@
 		<button
 			class="track"
 			*ngFor="let track of playlist, let i = index"
+			[ngClass]="{ 'playing': currentTrack === track }"
 			(click)="changeTrack(i)"
 		>
 			{{ track.name }}
-			<span *ngIf="currentTrack === track" class="waves"></span>
+			<span *ngIf="currentTrack === track && !playerAudio?.player?.paused" class="waves"></span>
 		</button>
 	</section>
 </div>

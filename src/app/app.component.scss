@@ -26,24 +26,28 @@
 	.tracklist {
 		width: 100%;
 		bottom: 0;
-	}
 
-	.track {
-		background: none;
-		color: inherit;
-		border: none;
-		outline: inherit;
-		padding: 0.5rem 0.4rem;
-		border-top: 1px solid pink;
-		cursor: pointer;
-		width: 100%;
-		text-align: left;
-		position: relative;
-		display: flex;
-		align-items: center;
+		.track {
+			background: none;
+			color: inherit;
+			border: none;
+			outline: inherit;
+			padding: 0.5rem 0.4rem;
+			border-top: 1px solid pink;
+			cursor: pointer;
+			width: 100%;
+			text-align: left;
+			position: relative;
+			display: flex;
+			align-items: center;
 
-		&:hover {
-			background-color: lightblue;
+			&.playing {
+				font-weight: bold;
+			}
+
+			&:hover {
+				background-color: lightblue;
+			}
 		}
 	}
 }

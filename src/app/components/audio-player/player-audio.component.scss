@@ -2,21 +2,24 @@
 	display:flex;
 	width:100%;
 	box-sizing:border-box;
+	justify-content: space-around;
 	transition: all 0.2s;
 
-	&_plays{
-		flex:2;
-		display:flex;
-		justify-content: space-around;
-	}
+		.control-button {
+			background: none;
+			color: inherit;
+			border: none;
+			outline: inherit;
+		}
 }
 
 #plays_btn, #prev_btn, #next_btn{
 	cursor:pointer;
 	width:26px;
 	max-width:18px;
+	transition: all 0.2s;
+
 	&:hover{
 		fill: pink;
 	}
-	transition: all 0.2s;
 }

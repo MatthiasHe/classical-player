@@ -1,5 +1,5 @@
-import { Component } from "@angular/core";
-import { ETrackChangeAction, ITrack } from "./components/audio-player/audio-player.component";
+import { Component, ViewChild } from "@angular/core";
+import { ETrackChangeAction, ITrack, PlayerAudioComponent } from "./components/audio-player/player-audio.component";
 
 @Component({
 	selector: "app-root",
@@ -7,6 +7,8 @@ import { ETrackChangeAction, ITrack } from "./components/audio-player/audio-play
 	styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
+	@ViewChild(PlayerAudioComponent) playerAudio: PlayerAudioComponent;
+
 	playlist: ITrack[] = [
 		{
 			name: "Brandenburg Concerto no 1 in F m",

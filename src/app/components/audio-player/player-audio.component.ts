@@ -22,8 +22,8 @@ export enum ETrackChangeAction {
 
 @Component({
 	selector: "app-player-audio",
-	templateUrl: "./audio-player.component.html",
-	styleUrls: ["./audio-player.component.scss"]
+	templateUrl: "./player-audio.component.html",
+	styleUrls: ["./player-audio.component.scss"]
 })
 export class PlayerAudioComponent implements OnChanges, AfterViewInit {
 	@Input() track: ITrack;
